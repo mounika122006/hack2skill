@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* AegisRelief Accessibility & Core Design Tokens */
+
+:root {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-card-hover: #334155;
+  --border-color: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  --primary-red: #ef4444;
+  --primary-red-hover: #dc2626;
+  --urgency-critical: #dc2626;
+  --urgency-high: #f97316;
+  --urgency-medium: #eab308;
+  --urgency-low: #3b82f6;
+  --status-available: #22c55e;
+  
+  --focus-ring: #60a5fa;
+  --target-min-height: 48px;
+}
+
+/* High Contrast Mode Overrides */
+[data-high-contrast="true"] {
+  --bg-main: #000000;
+  --bg-card: #111111;
+  --bg-card-hover: #222222;
+  --border-color: #ffffff;
+  --text-main: #ffffff;
+  --text-muted: #e2e8f0;
+  
+  --primary-red: #ff0000;
+  --urgency-critical: #ff0000;
+  --urgency-high: #ff8800;
+  --urgency-medium: #ffff00;
+  --urgency-low: #0088ff;
+  --status-available: #00ff00;
+  
+  --focus-ring: #ffff00;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility Focus Ring Standards */
+:focus-visible {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 2px !important;
+}
+
+/* Accessible Interactive Targets (Min 48px height) */
+button, 
+a.btn, 
+input, 
+select, 
+textarea {
+  min-height: var(--target-min-height);
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Leaflet Map Accessibility Override */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  background-color: var(--bg-card) !important;
+  z-index: 1;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
